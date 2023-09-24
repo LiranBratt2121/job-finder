@@ -12,6 +12,7 @@ import {
 
 const Home = () => {
   const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState('');
 
   return (
     // Body general
@@ -38,7 +39,15 @@ const Home = () => {
             padding: SIZES.small,
           }}
         >
-          <Welcome />
+          <Welcome
+            SearchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            handleClick={() =>{
+              if (searchTerm){
+                router.push(`/search${searchTerm}`);
+              }
+            }}
+          />
           <Popularjobs />
           <Nearbyjobs />
         </View>
